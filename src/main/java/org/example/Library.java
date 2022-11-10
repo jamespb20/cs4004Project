@@ -31,5 +31,4 @@ public class Library {
     public void getNewBook(String book){
         books.add(book);
     }
-
 }
