@@ -14,7 +14,7 @@ public class College {
     }
 
     public boolean checkBook(String book, Library library){
-        if (library.getBook().contains(book)){
+        if (!library.getBooks().isEmpty() && library.getBooks().contains(book)){
             return true;
         }else return false;
     }

@@ -11,12 +11,13 @@ public class MyTest {
         Library library = new Library();
         ul.addLibrary(library);
         Student student1 = new Student("Craig");
-        library.bookBorrowing(student1,"The Communists Manifesto");
         library.getNewBook("The Communists Manifesto");
+        library.bookBorrowing(student1,"The Communists Manifesto");
 
-        College ul2 = new College();
+
         Library library2 = new Library();
-        ul2.addLibrary(library2);
+        ul.addLibrary(library2);
+        ul.checkBook("The Communists Manifesto",library2);
         assertFalse(ul.checkBook("The Communists Manifesto",library2));
     }
 }
