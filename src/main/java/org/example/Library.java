@@ -6,7 +6,7 @@ public class Library {
 
     private String book;
     private Student student;
-    private String name;
+
     private ArrayList<Student> booksBorrowing;
     private ArrayList<String> books;
 
@@ -16,19 +16,21 @@ public class Library {
         booksBorrowing = new ArrayList<>();
     }
 
-    public void bookBorrowing(Student student, String book){
+    public boolean bookBorrowing(Student student, String book){
         this.book = book;
         this.student = student;
         int i= 0;
         do {
             if (!booksBorrowing.isEmpty() && booksBorrowing.get(i).equals(student)) {
-                System.out.printf("This book is already in use by %S", student.getName());
+                System.out.println("This book is already in use");
+                return false;
             } else {
-                student = new Student(this.name, book);
                 booksBorrowing.add(student);
+
             }
             i++;
         }while (i<booksBorrowing.size());
+        return true;
     }
 
 

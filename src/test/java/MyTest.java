@@ -13,11 +13,17 @@ public class MyTest {
         Student student1 = new Student("Craig");
         library.getNewBook("The Communists Manifesto");
         library.bookBorrowing(student1,"The Communists Manifesto");
+        Student student2 = new Student("Kevin");
+        assertFalse( library.bookBorrowing(student2,"The Communists Manifesto"));
 
-
-        Library library2 = new Library();
+        /*Library library2 = new Library();
         ul.addLibrary(library2);
         ul.checkBook("The Communists Manifesto",library2);
-        assertFalse(ul.checkBook("The Communists Manifesto",library2));
+        assertFalse(ul.checkBook("The Communists Manifesto",library2));*/
+    }
+
+    @Test
+    public void testUnlimited(){
+
     }
 }
