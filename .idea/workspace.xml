@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3118e9a4-6def-44a8-8738-a84fdf832934" name="Changes" comment="Finished reservation of book test, now test will pass :)">
+    <list default="true" id="3118e9a4-6def-44a8-8738-a84fdf832934" name="Changes" comment="Fixed testBookReservation to test for what we actually need">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Library.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Library.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Student.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/MyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MyTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,7 +44,7 @@
       <recent name="C:\Users\sophi\OneDrive - University of Limerick\CS4004\CS4004 Project\CS4004 Project\src\main\java\org\example" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.MyTest.testBookReservation">
+  <component name="RunManager" selected="JUnit.MyTest.testUnlimited">
     <configuration name="MyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CS4004 Project" />
       <option name="PACKAGE_NAME" value="" />
@@ -63,6 +64,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MyTest.testUnlimited" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CS4004 Project" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MyTest" />
+      <option name="METHOD_NAME" value="testUnlimited" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CS4004 Project" />
       <option name="PACKAGE_NAME" value="" />
@@ -74,6 +85,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MyTest.testUnlimited" />
         <item itemvalue="JUnit.MyTest.testBookReservation" />
         <item itemvalue="JUnit.MyTest" />
         <item itemvalue="JUnit.Test" />
@@ -110,7 +122,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668095549390</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Fixed testBookReservation to test for what we actually need">
+      <created>1668189039502</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1668189039502</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -129,6 +148,7 @@
     <MESSAGE value="Made College, Student and library class" />
     <MESSAGE value="Made College. Student and Library, Test started as well" />
     <MESSAGE value="Finished reservation of book test, now test will pass :)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished reservation of book test, now test will pass :)" />
+    <MESSAGE value="Fixed testBookReservation to test for what we actually need" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed testBookReservation to test for what we actually need" />
   </component>
 </project>

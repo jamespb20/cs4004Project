@@ -24,6 +24,13 @@ public class MyTest {
 
     @Test
     public void testUnlimited(){
-
+        College ul = new College();
+        Library library = new Library();
+        ul.addLibrary(library);
+        Student student1 = new Student("Craig");
+        library.getNewBook("The Communists Manifesto");
+        library.bookBorrowing(student1,"The Communists Manifesto");
+        library.bookReturn(student1);
+        assertFalse(library.bookBorrowing(student1,"The Communists Manifesto"));
     }
 }
