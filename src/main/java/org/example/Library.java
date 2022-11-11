@@ -25,7 +25,13 @@ public class Library {
                 System.out.println("This book is already in use");
                 return false;
             } else {
-                booksBorrowing.add(student);
+                if (student.getBook() == null || student.getBook() != book) {
+                    student.setBook(book);
+                    booksBorrowing.add(student);
+                } else {
+                    System.out.println("You have previously borrowed this book");
+                    return false;
+                }
             }
             i++;
         } while (i < booksBorrowing.size());
@@ -34,8 +40,10 @@ public class Library {
 
 
     public void bookReturn(Student student) {
-        booksBorrowing.remove(student);
-        System.out.println("Book has been returned");
+        if (booksBorrowing.contains(student)){
+            booksBorrowing.remove(student);
+            System.out.println("Book has been returned");
+        }
     }
 
 
