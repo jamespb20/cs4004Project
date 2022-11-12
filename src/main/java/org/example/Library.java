@@ -16,7 +16,7 @@ public class Library {
         booksBorrowing = new ArrayList<>();
     }
 
-    public boolean checkBook(String book, Library library){
+    public boolean checkBook(String book, Library library) {
         return !library.getBooks().isEmpty() && library.getBooks().contains(book);
     }
 
@@ -44,7 +44,7 @@ public class Library {
 
 
     public void bookReturn(Student student) {
-        if (booksBorrowing.contains(student)){
+        if (booksBorrowing.contains(student)) {
             booksBorrowing.remove(student);
             System.out.println("Book has been returned");
         }
