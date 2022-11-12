@@ -4,7 +4,6 @@ package org.example;
 public class Student {//Student has name and can borrow books
     private String name;
     private String book;
-    private String prevBook;
 
     public Student(String name, String book) {
         this.name = name;

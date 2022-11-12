@@ -16,6 +16,10 @@ public class Library {
         booksBorrowing = new ArrayList<>();
     }
 
+    public boolean checkBook(String book, Library library){
+        return !library.getBooks().isEmpty() && library.getBooks().contains(book);
+    }
+
     public boolean bookBorrowing(Student student, String book) {
         this.book = book;
         this.student = student;
