@@ -26,4 +26,8 @@ public class Student {//Student has name and can borrow books
     public void setBook(String book) {
         this.book = book;
     }
+
+    public String toString(){
+        return getName();
+    }
 }

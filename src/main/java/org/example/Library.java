@@ -8,12 +8,16 @@ public class Library {
     private Student student;
 
     private ArrayList<Student> booksBorrowing;
+    private ArrayList<String> damagedBooks;
+    private ArrayList<Student> previousOwners;
     private ArrayList<String> books;
 
 
     public Library() {
         books = new ArrayList<>();
         booksBorrowing = new ArrayList<>();
+        previousOwners = new ArrayList<>();
+        damagedBooks = new ArrayList<>();
     }
 
     public boolean checkBook(String book, Library library) {
@@ -25,8 +29,12 @@ public class Library {
         this.student = student;
         int i = 0;
         do {
+            if (damagedBooks.contains(book)){
+                System.out.printf("The book %s was found to be damaged by previous owner: %s",book,getPreviousOwner(book));
+                return false;
+            }
             if (!booksBorrowing.isEmpty() && booksBorrowing.get(i).equals(student)) {
-                System.out.println("This book is already in use");
+                System.out.println("This book is either already in use or not in this library");
                 return false;
             } else {
                 if (student.getBook() == null || student.getBook() != book) {
@@ -43,13 +51,30 @@ public class Library {
     }
 
 
-    public void bookReturn(Student student) {
+    public void bookReturn(Student student) {//Todo: add traceability of students who return damaged books
         if (booksBorrowing.contains(student)) {
+            previousOwners.add(student);
             booksBorrowing.remove(student);
             System.out.println("Book has been returned");
         }
     }
 
+    public void setBookDamaged(String book) {
+        damagedBooks.add(book);
+    }
+
+    public String getPreviousOwner(String book){
+        for (Student student: previousOwners) {
+            if (student.getBook() == book){
+                return student.toString();
+            }
+        }
+        return "book has no previous owners";
+    }
+
+    public ArrayList<String> getDamagedBooks() {
+        return damagedBooks;
+    }
 
     public ArrayList<Student> getBooksBorrowing() {
         return booksBorrowing;

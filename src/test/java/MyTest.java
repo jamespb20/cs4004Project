@@ -47,4 +47,18 @@ public class MyTest {
         library1.getNewBook("Introduction to Java programming");
         assertTrue(lit.getBookCollege(library2, "Introduction to Java programming"));
     }
+
+    @Test
+    public void testTraceability(){// if a student returns a damaged book they shouldn't be able to borrow another book
+        College ul = new College();
+        Library library = new Library();
+        ul.addLibrary(library);
+        Student student1 = new Student("Craig");
+        library.getNewBook("book1");
+        library.bookBorrowing(student1,"book1");
+        library.bookReturn(student1);
+        library.setBookDamaged("book1");//Book came back damaged
+        Student student2 = new Student("James");
+        assertFalse(library.bookBorrowing(student2,"book1"));
+    }
 }
