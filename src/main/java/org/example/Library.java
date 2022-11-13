@@ -104,15 +104,16 @@ public class Library {
     }
 
     public boolean genreSearch(String searchedGenre){
-        boolean result = false;
         for (int i = 0; i < books.size(); i++) {
-            if (genres.get(i).toLowerCase() == searchedGenre.toLowerCase()) {
+            if (genres.get(i) == searchedGenre) {
                 matchedGenres.add(books.get(i));
-                result = true;
             }
         }
-        System.out.println(matchedGenres);
-        return result;
+        if (matchedGenres.size() > 0){
+            return true;
+        }else{
+            return false;
+        }
     }
 
 }
