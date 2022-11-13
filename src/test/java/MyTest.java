@@ -76,4 +76,14 @@ public class MyTest {
         library.genreAdder("Dystopian");
         assertTrue(library.genreSearch("Horror"));
     }
+    @Test
+    public void testMissing(){
+        Library library = new Library();
+        Student james = new Student("James");
+        library.getNewBook("Ninja: Get Good: My Ultimate Guide to Gaming");
+        library.getNewBook("Official Fortnite Battle Royale Survival Guide");
+        library.bookBorrowing(james, "Ninja: Get Good: My Ultimate Guide to Gaming");
+        library.bookMissing(james, "Ninja: Get Good: My Ultimate Guide to Gaming");
+        assertFalse(library.bookBorrowing(james, "Official Fortnite Battle Royale Survival Guide"));
+    }
 }
