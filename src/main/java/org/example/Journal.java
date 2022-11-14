@@ -63,12 +63,12 @@ public class Journal {
 
         if(topics.contains(topic) || isOtherUniAccess() == true){
             setSubscription(true);
-            return false;
+            return true;
         }
         else
         {
             setSubscription(false);
-            return true;
+            return false;
         }
     }
 }

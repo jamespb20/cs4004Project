@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3118e9a4-6def-44a8-8738-a84fdf832934" name="Changes" comment="Made College. Student and Library, Test started as well">
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Library.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Library.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/MyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MyTest.java" afterDir="false" />
+    <list default="true" id="3118e9a4-6def-44a8-8738-a84fdf832934" name="Changes" comment="Made Journal Class and the test for Journal Subcription of marginal interest of a UNI (Test isnt passing) with screenshot">
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Journal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Journal.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,7 +159,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668189039502</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Made Journal Class and the test for Journal Subcription of marginal interest of a UNI (Test isnt passing) with screenshot">
+      <created>1668394769991</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1668394769991</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -184,6 +187,7 @@
     <MESSAGE value="Made College. Student and Library, Test started as well" />
     <MESSAGE value="Finished reservation of book test, now test will pass :)" />
     <MESSAGE value="Fixed testBookReservation to test for what we actually need" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed testBookReservation to test for what we actually need" />
+    <MESSAGE value="Made Journal Class and the test for Journal Subcription of marginal interest of a UNI (Test isnt passing) with screenshot" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made Journal Class and the test for Journal Subcription of marginal interest of a UNI (Test isnt passing) with screenshot" />
   </component>
 </project>
