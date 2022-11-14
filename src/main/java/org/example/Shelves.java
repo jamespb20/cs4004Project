@@ -3,7 +3,7 @@ package org.example;
 
 import java.util.ArrayList;
 
-public class Shelves {
+public class  Shelves {
 
     private String name;
     private ArrayList<String> books;

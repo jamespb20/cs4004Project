@@ -8,24 +8,41 @@ public class Journal {
     private String topic;
     private boolean subscription;
     private boolean otherUniAccess;
+    private boolean journalinVolume;
 
+    private ArrayList<String> volumes;
     private ArrayList<String> topics;
 
     public Journal(String name){
 
         this.name = name;
         topics = new ArrayList<>();
+        volumes = new ArrayList<>();
     }
 
     public String getTopic() {
         return topic;
     }
 
+    public boolean isJournalinVolume() {
+        return journalinVolume;
+    }
+
+    public void setJournalinVolume(boolean journalinVolume) {
+        this.journalinVolume = journalinVolume;
+    }
 
     public void setTopic(String topic) {
         this.topic = topic;
     }
 
+    public void setVolumes(ArrayList<String> volumes) {
+        this.volumes = volumes;
+    }
+
+    public ArrayList<String> getVolumes() {
+        return volumes;
+    }
 
     public void setSubscription(boolean subscription){
         this.subscription = subscription;
@@ -54,10 +71,17 @@ public class Journal {
         this.topics = topics;
     }
 
+
+    public void addToVolumes(String journal){
+
+        volumes.add(journal);
+    }
+
     public void addToTopics(String topic){
 
         topics.add(topic);
     }
+
 
     public boolean cancelSubscription(String topic){
 
@@ -70,5 +94,18 @@ public class Journal {
             setSubscription(false);
             return false;
         }
+    }
+
+
+    public boolean searchVolumes(String journal){
+            if(volumes.contains(journal)){
+                setJournalinVolume(true);
+                return false;
+            }
+            else
+            {
+                setJournalinVolume(false);
+                return true;
+            }
     }
 }

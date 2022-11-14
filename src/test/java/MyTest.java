@@ -88,12 +88,20 @@ public class MyTest {
 
     @Test
     public void testSubscriptionofJournalsofMarginalInterest(){
-
         Journal coolguys = new Journal("Cool guy");
         coolguys.setOtherUniAccess(true);
         coolguys.setTopic("Cool");
         assertTrue(coolguys.cancelSubscription("Uncool"));
     }
+
+    @Test
+    public void testJournalBoundToVolumes(){
+        Journal coolpeople = new Journal("Sick Guys");
+        coolpeople.setJournalinVolume(true);
+        assertFalse(coolpeople.searchVolumes("Sick Guys"));
+    }
+
+
 
 
 }
