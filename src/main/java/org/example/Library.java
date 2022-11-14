@@ -14,6 +14,7 @@ public class Library {
     private ArrayList<String> genres;
     private ArrayList<String> matchedGenres;
     private ArrayList<Student> bannedUsers;
+    private  ArrayList<Shelves> shelves;
 
 
     public Library() {
@@ -24,6 +25,7 @@ public class Library {
         genres = new ArrayList<>();
         matchedGenres = new ArrayList<>();
         bannedUsers = new ArrayList<>();
+        shelves = new ArrayList<>();
     }
 
     public boolean checkBook(String book, Library library) {
@@ -137,4 +139,8 @@ public class Library {
         }
     }
 
+
+    public ArrayList<Shelves> getShelves(){
+        return shelves;
+    }
 }
