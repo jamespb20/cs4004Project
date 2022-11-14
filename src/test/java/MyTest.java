@@ -1,6 +1,4 @@
-import org.example.College;
-import org.example.Library;
-import org.example.Student;
+import org.example.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -86,4 +84,16 @@ public class MyTest {
         library.bookMissing(james, "Ninja: Get Good: My Ultimate Guide to Gaming");
         assertFalse(library.bookBorrowing(james, "Official Fortnite Battle Royale Survival Guide"));
     }
+
+
+    @Test
+    public void testSubscriptionofJournalsofMarginalInterest(){
+
+        Journal coolguys = new Journal("Cool guy");
+        coolguys.setOtherUniAccess(true);
+        coolguys.setTopic("Cool");
+        assertTrue(coolguys.cancelSubscription("Uncool"));
+    }
+
+
 }
