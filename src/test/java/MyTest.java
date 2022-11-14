@@ -61,4 +61,29 @@ public class MyTest {
         Student student2 = new Student("James");
         assertFalse(library.bookBorrowing(student2,"book1"));
     }
+    @Test
+    public void testSearch(){  // users should be able to search books by genre
+        Library library = new Library();
+        library.getNewBook("The Shining");
+        library.getNewBook("Diary of a Wimpy Kid");
+        library.getNewBook("It");
+        library.getNewBook("1984");
+        library.getNewBook("Fahrenheit 451");
+        library.genreAdder("Horror");
+        library.genreAdder("Kids");
+        library.genreAdder("Horror");
+        library.genreAdder("Sci-Fi");
+        library.genreAdder("Dystopian");
+        assertTrue(library.genreSearch("Horror"));
+    }
+    @Test
+    public void testMissing(){
+        Library library = new Library();
+        Student james = new Student("James");
+        library.getNewBook("Ninja: Get Good: My Ultimate Guide to Gaming");
+        library.getNewBook("Official Fortnite Battle Royale Survival Guide");
+        library.bookBorrowing(james, "Ninja: Get Good: My Ultimate Guide to Gaming");
+        library.bookMissing(james, "Ninja: Get Good: My Ultimate Guide to Gaming");
+        assertFalse(library.bookBorrowing(james, "Official Fortnite Battle Royale Survival Guide"));
+    }
 }

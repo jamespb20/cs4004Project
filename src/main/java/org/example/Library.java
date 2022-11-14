@@ -11,6 +11,9 @@ public class Library {
     private ArrayList<String> damagedBooks;
     private ArrayList<Student> previousOwners;
     private ArrayList<String> books;
+    private ArrayList<String> genres;
+    private ArrayList<String> matchedGenres;
+    private ArrayList<Student> bannedUsers;
 
 
     public Library() {
@@ -18,6 +21,9 @@ public class Library {
         booksBorrowing = new ArrayList<>();
         previousOwners = new ArrayList<>();
         damagedBooks = new ArrayList<>();
+        genres = new ArrayList<>();
+        matchedGenres = new ArrayList<>();
+        bannedUsers = new ArrayList<>();
     }
 
     public boolean checkBook(String book, Library library) {
@@ -29,6 +35,10 @@ public class Library {
         this.student = student;
         int i = 0;
         do {
+            if (bannedUsers.contains(student)){
+                System.out.println("You have been banned from using the library for not returning books");
+                return false;
+            }
             if (damagedBooks.contains(book)){
                 System.out.printf("The book %s was found to be damaged by previous owner: %s",book,getPreviousOwner(book));
                 return false;
@@ -57,6 +67,21 @@ public class Library {
             booksBorrowing.remove(student);
             System.out.println("Book has been returned");
         }
+    }
+    public void bookMissing(Student student, String book){
+        if (booksBorrowing.contains(student)){
+            for (int i = 0; i < books.size(); i++) { //removes book from inventory
+                if (books.get(i) == book){
+                    books.remove(i);
+                }
+            }
+            bannedUsers.add(student);
+            System.out.println("You have been banned from using the library for not returning books");
+        }
+    }
+
+    public ArrayList<Student> getBanned() {
+        return bannedUsers;
     }
 
     public void setBookDamaged(String book) {
@@ -92,4 +117,24 @@ public class Library {
     public void getNewBook(String book) {
         books.add(book);
     }
+
+
+    public ArrayList genreAdder(String genre){
+        genres.add(genre);
+        return genres;
+    }
+
+    public boolean genreSearch(String searchedGenre){
+        for (int i = 0; i < books.size(); i++) {
+            if (genres.get(i) == searchedGenre) {
+                matchedGenres.add(books.get(i));
+            }
+        }
+        if (matchedGenres.size() > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 }
