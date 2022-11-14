@@ -7,6 +7,12 @@
     <groupId>org.example</groupId>
     <artifactId>CS4004-Project</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -32,45 +38,5 @@
             <scope>compile</scope>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <!-- JUnit 5 requires Surefire version 2.22.0 or higher -->
-                <version>2.22.0</version>
-            </plugin>
-
-            <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.8</version>
-                <executions>
-                    <execution>
-                        <id>default-prepare-agent</id>
-                        <goals>
-                            <goal>prepare-agent</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>jacoco-report</id>
-                        <phase>test</phase>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
-
-    <properties>
-        <maven.compiler.source>18</maven.compiler.source>
-        <maven.compiler.target>18</maven.compiler.target>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
 
 </project>
