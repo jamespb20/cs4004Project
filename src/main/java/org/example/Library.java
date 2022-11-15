@@ -143,4 +143,10 @@ public class Library {
     public ArrayList<Shelves> getShelves(){
         return shelves;
     }
+
+    public void addShelftoLibrary(Shelves shelf){
+
+        shelves.add(shelf);
+    }
+
 }

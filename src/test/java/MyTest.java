@@ -101,6 +101,14 @@ public class MyTest {
         assertFalse(coolpeople.searchVolumes("Sick Guys"));
     }
 
+    @Test
+    public void testBookIndexes(){
+        College ul = new College();
+        Library library = new Library();
+        Shelves cool = new Shelves("cool");
+        library.addShelftoLibrary(cool);
+    }
+
 
 
 
