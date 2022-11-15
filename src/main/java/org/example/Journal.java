@@ -85,7 +85,7 @@ public class Journal {
 
     public boolean cancelSubscription(String topic){
 
-        if(topics.contains(topic) || isOtherUniAccess() == true){
+        if(topics.contains(topic) || isOtherUniAccess()){
             setSubscription(true);
             return true;
         }
@@ -100,12 +100,12 @@ public class Journal {
     public boolean searchVolumes(String journal){
             if(volumes.contains(journal)){
                 setJournalinVolume(true);
-                return false;
+                return true;
             }
             else
             {
                 setJournalinVolume(false);
-                return true;
+                return false;
             }
     }
 }
