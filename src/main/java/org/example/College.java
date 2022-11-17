@@ -13,8 +13,13 @@ public class College {
         libraries.add(library);
     }
 
-    public boolean checkBook(String book, Library library) {
-        return !library.getBooks().isEmpty() && library.getBooks().contains(book);
+    public boolean checkBook(String book, ArrayList<Library> library) {
+        for (Library lib: libraries) {
+            if (!library.isEmpty() && lib.getBooks().contains(book)){
+                return true;
+            }
+        }return false;
+
     }
 
     public void addColleges(College college) {

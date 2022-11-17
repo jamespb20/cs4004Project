@@ -1,77 +1,114 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Library {
 
     private String book;
     private Student student;
 
-    private ArrayList<Student> booksBorrowing;
+    private ArrayList<Student> Borrowing;
     private ArrayList<String> damagedBooks;
-    private ArrayList<Student> previousOwners;
+    private ArrayList<Student> previousOwnersBooks;
+
+    private ArrayList<Student> previousOwnersJournals;
     private ArrayList<String> books;
     private ArrayList<String> genres;
     private ArrayList<String> matchedGenres;
     private ArrayList<Student> bannedUsers;
     private  ArrayList<Shelves> shelves;
+    private ArrayList<Journal> Journals;
 
 
     public Library() {
         books = new ArrayList<>();
-        booksBorrowing = new ArrayList<>();
-        previousOwners = new ArrayList<>();
+        Borrowing = new ArrayList<>();
+        previousOwnersBooks = new ArrayList<>();
         damagedBooks = new ArrayList<>();
         genres = new ArrayList<>();
         matchedGenres = new ArrayList<>();
         bannedUsers = new ArrayList<>();
         shelves = new ArrayList<>();
+        Journals = new ArrayList<>();
     }
 
     public boolean checkBook(String book, Library library) {
         return !library.getBooks().isEmpty() && library.getBooks().contains(book);
     }
 
+    public boolean checkJournal(Journal journal,Library library){
+        return !library.getJournals().isEmpty() && library.getJournals().contains(journal);
+    }
+
+    public void addJournal(Journal journal){
+        Journals.add(journal);
+        Collections.sort(Journals);
+    }
+
+    public boolean journalBorrowing(Student student, Journal journal){
+        int i = 0;
+        do {
+            if (!Borrowing.isEmpty() && Borrowing.get(i).equals(student)){
+                System.out.println("This book is either already in use or not in this library");
+                return true;
+            } else if (student.getJournal() == null || student.getJournal() != journal){
+                student.setJournal(journal);
+                Borrowing.add(student);
+                return true;
+            }
+            i++;
+        } while (i<Borrowing.size());
+        return false;
+    }
+
+
+
     public boolean bookBorrowing(Student student, String book) {
-        this.book = book;
-        this.student = student;
         int i = 0;
         do {
             if (bannedUsers.contains(student)){
                 System.out.println("You have been banned from using the library for not returning books");
-                return false;
+                return true;
             }
             if (damagedBooks.contains(book)){
                 System.out.printf("The book %s was found to be damaged by previous owner: %s",book,getPreviousOwner(book));
-                return false;
+                return true;
             }
-            if (!booksBorrowing.isEmpty() && booksBorrowing.get(i).equals(student)) {
+            if (!Borrowing.isEmpty() && Borrowing.get(i).equals(student)) {
                 System.out.println("This book is either already in use or not in this library");
-                return false;
+                return true;
             } else {
                 if (student.getBook() == null || student.getBook() != book) {
                     student.setBook(book);
-                    booksBorrowing.add(student);
-                } else {
-                    System.out.println("You have previously borrowed this book");
-                    return false;
+                    Borrowing.add(student);
+                    System.out.println("Book has been borrowed");
+                    return true;
                 }
             }
             i++;
-        } while (i < booksBorrowing.size());
-        return true;
+        } while (i < Borrowing.size());
+        return false;
     }
 
+    public void journalReturn(Student student){
+        if (Borrowing.contains(student)){
+            previousOwnersJournals.add(student);
+            Borrowing.remove(student);
+            System.out.println("Journal has been returned");
+        }
+    }
 
-    public void bookReturn(Student student) {//Todo: add traceability of students who return damaged books
-        if (booksBorrowing.contains(student)) {
-            previousOwners.add(student);
-            booksBorrowing.remove(student);
+    public void bookReturn(Student student) {
+        if (Borrowing.contains(student)) {
+            previousOwnersBooks.add(student);
+            Borrowing.remove(student);
+            student.setBook(null);
             System.out.println("Book has been returned");
         }
     }
     public void bookMissing(Student student, String book){
-        if (booksBorrowing.contains(student)){
+        if (Borrowing.contains(student)){
             for (int i = 0; i < books.size(); i++) { //removes book from inventory
                 if (books.get(i) == book){
                     books.remove(i);
@@ -82,6 +119,15 @@ public class Library {
         }
     }
 
+    public String getPreviousOwner(String book){
+        for (Student student: previousOwnersBooks) {
+            if (student.getBook() == book){
+                return student.toString();
+            }
+        }
+        return "book has no previous owners";
+    }
+
     public ArrayList<Student> getBanned() {
         return bannedUsers;
     }
@@ -90,36 +136,25 @@ public class Library {
         damagedBooks.add(book);
     }
 
-    public String getPreviousOwner(String book){
-        for (Student student: previousOwners) {
-            if (student.getBook() == book){
-                return student.toString();
-            }
-        }
-        return "book has no previous owners";
-    }
-
     public ArrayList<String> getDamagedBooks() {
         return damagedBooks;
     }
 
-    public ArrayList<Student> getBooksBorrowing() {
-        return booksBorrowing;
+    public ArrayList<Student> getBorrowing() {
+        return Borrowing;
     }
 
     public ArrayList<String> getBooks() {
         return books;
     }
 
-
-    public String getBook() {
-        return book;
-    }
-
     public void getNewBook(String book) {
         books.add(book);
     }
 
+    public ArrayList<Journal> getJournals() {
+        return Journals;
+    }
 
     public ArrayList genreAdder(String genre){
         genres.add(genre);
