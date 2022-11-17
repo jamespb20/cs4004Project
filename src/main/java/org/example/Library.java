@@ -156,9 +156,8 @@ public class Library {
         return Journals;
     }
 
-    public ArrayList genreAdder(String genre){
+    public void genreAdder(String genre){
         genres.add(genre);
-        return genres;
     }
 
     public boolean genreSearch(String searchedGenre){
