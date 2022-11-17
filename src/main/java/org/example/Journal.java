@@ -2,34 +2,25 @@ package org.example;
 
 import java.util.ArrayList;
 
-public class Journal {
+public class Journal implements Comparable<Journal>{
 
     private String name;
     private String topic;
     private boolean subscription;
     private boolean otherUniAccess;
-    private boolean journalinVolume;
-
     private ArrayList<String> volumes;
     private ArrayList<String> topics;
 
-    public Journal(String name){
+    private int year;
 
+    public Journal(String name, int year){
         this.name = name;
-        topics = new ArrayList<>();
-        volumes = new ArrayList<>();
+        this.year = year;
+
     }
 
-    public String getTopic() {
-        return topic;
-    }
-
-    public boolean isJournalinVolume() {
-        return journalinVolume;
-    }
-
-    public void setJournalinVolume(boolean journalinVolume) {
-        this.journalinVolume = journalinVolume;
+    public Journal(String name) {
+        this.name = name;
     }
 
     public void setTopic(String topic) {
@@ -67,16 +58,6 @@ public class Journal {
         return topics;
     }
 
-    public void setTopics(ArrayList<String> topics) {
-        this.topics = topics;
-    }
-
-
-    public void addToVolumes(String journal){
-
-        volumes.add(journal);
-    }
-
     public void addToTopics(String topic){
 
         topics.add(topic);
@@ -98,14 +79,23 @@ public class Journal {
 
 
     public boolean searchVolumes(String journal){
-            if(volumes.contains(journal)){
-                setJournalinVolume(true);
-                return true;
-            }
-            else
-            {
-                setJournalinVolume(false);
-                return false;
-            }
+        return volumes.contains(journal);
+    }
+
+    @Override
+    public int compareTo(Journal o) {
+        int compareYear = o.getYear();
+        return compareYear - this.year;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+
+
+    @Override
+    public String toString() {
+        return "Journal: " + getName() + " Year:" + getYear();
     }
 }
