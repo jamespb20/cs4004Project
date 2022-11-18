@@ -19,6 +19,7 @@ public class Library {
     private ArrayList<Student> bannedUsers;
     private  ArrayList<Shelves> shelves;
     private ArrayList<Journal> Journals;
+    private ArrayList<Student> journalSubscriptions;
 
 
     public Library() {
@@ -46,50 +47,8 @@ public class Library {
         Collections.sort(Journals);
     }
 
-    public boolean journalBorrowing(Student student, Journal journal){
-        int i = 0;
-        do {
-            if (!Borrowing.isEmpty() && Borrowing.get(i).equals(student)){
-                System.out.println("This book is either already in use or not in this library");
-                return true;
-            } else if (student.getJournal() == null || student.getJournal() != journal){
-                student.setJournal(journal);
-                Borrowing.add(student);
-                return true;
-            }
-            i++;
-        } while (i<Borrowing.size());
-        return false;
-    }
 
 
-
-    public boolean bookBorrowing(Student student, String book) {
-        int i = 0;
-        do {
-            if (bannedUsers.contains(student)){
-                System.out.println("You have been banned from using the library for not returning books");
-                return true;
-            }
-            if (damagedBooks.contains(book)){
-                System.out.printf("The book %s was found to be damaged by previous owner: %s",book,getPreviousOwner(book));
-                return true;
-            }
-            if (!Borrowing.isEmpty() && Borrowing.get(i).equals(student)) {
-                System.out.println("This book is either already in use or not in this library");
-                return true;
-            } else {
-                if (student.getBook() == null || student.getBook() != book) {
-                    student.setBook(book);
-                    Borrowing.add(student);
-                    System.out.println("Book has been borrowed");
-                    return true;
-                }
-            }
-            i++;
-        } while (i < Borrowing.size());
-        return false;
-    }
 
     public void journalReturn(Student student){
         if (Borrowing.contains(student)){
@@ -107,6 +66,7 @@ public class Library {
             System.out.println("Book has been returned");
         }
     }
+
     public void bookMissing(Student student, String book){
         if (Borrowing.contains(student)){
             for (int i = 0; i < books.size(); i++) { //removes book from inventory
@@ -118,7 +78,6 @@ public class Library {
             System.out.println("You have been banned from using the library for not returning books");
         }
     }
-
     public String getPreviousOwner(String book){
         for (Student student: previousOwnersBooks) {
             if (student.getBook() == book){
@@ -181,6 +140,68 @@ public class Library {
     public void addShelftoLibrary(Shelves shelf){
 
         shelves.add(shelf);
+    }
+
+    public boolean journalSubscription(Student student,Journal journal){
+        if (Journals.contains(journal)){
+            journalSubscriptions.add(student);
+            return true;
+        }else {
+            System.out.println("Library doesn't have this journals subscription");
+            return false;
+        }
+    }
+
+    public boolean cancelJournalSubscription(Student student){
+        if (journalSubscriptions.contains(student)){
+             journalSubscriptions.remove(student);
+             return true;
+        }else {
+            System.out.println("This student is not subscribed to any journal subscriptions");
+            return false;
+        }
+    }
+
+    /*public boolean journalBorrowing(Student student, Journal journal){DON'T THINK THIS IS NEEDED
+        int i = 0;
+        do {
+            if (!Borrowing.isEmpty() && Borrowing.get(i).equals(student)){
+                System.out.println("This book is either already in use or not in this library");
+                return true;
+            } else if (student.getJournal() == null || student.getJournal() != journal){
+                student.setJournal(journal);
+                Borrowing.add(student);
+                return true;
+            }
+            i++;
+        } while (i<Borrowing.size());
+        return false;
+    }*/
+    public boolean bookBorrowing(Student student, String book) {
+        int i = 0;
+        do {
+            if (bannedUsers.contains(student)){
+                System.out.println("You have been banned from using the library for not returning books");
+                return true;
+            }
+            if (damagedBooks.contains(book)){
+                System.out.printf("The book %s was found to be damaged by previous owner: %s",book,getPreviousOwner(book));
+                return true;
+            }
+            if (!Borrowing.isEmpty() && Borrowing.get(i).equals(student)) {
+                System.out.println("This book is either already in use or not in this library");
+                return true;
+            } else {
+                if (student.getBook() == null || student.getBook() != book) {
+                    student.setBook(book);
+                    Borrowing.add(student);
+                    System.out.println("Book has been borrowed");
+                    return true;
+                }
+            }
+            i++;
+        } while (i < Borrowing.size());
+        return false;
     }
 
 }

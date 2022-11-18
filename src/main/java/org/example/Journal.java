@@ -9,7 +9,6 @@ public class Journal implements Comparable<Journal>{
     private boolean subscription;
     private boolean otherUniAccess;
     private ArrayList<String> volumes;
-    private ArrayList<String> topics;
 
     private int year;
 
@@ -54,17 +53,7 @@ public class Journal implements Comparable<Journal>{
         return otherUniAccess;
     }
 
-    public ArrayList<String> getTopics() {
-        return topics;
-    }
-
-    public void addToTopics(String topic){
-
-        topics.add(topic);
-    }
-
-
-    public boolean cancelSubscription(String topic){
+    /*public boolean cancelSubscription(String topic){
 
         if(topics.contains(topic) || isOtherUniAccess()){
             setSubscription(true);
@@ -75,12 +64,7 @@ public class Journal implements Comparable<Journal>{
             setSubscription(false);
             return false;
         }
-    }
-
-
-    public boolean searchVolumes(String journal){
-        return volumes.contains(journal);
-    }
+    }*/
 
     @Override
     public int compareTo(Journal o) {
