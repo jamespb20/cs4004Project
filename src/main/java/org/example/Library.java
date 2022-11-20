@@ -12,7 +12,7 @@ public class Library {
     private ArrayList<String> damagedBooks;
     private ArrayList<Student> previousOwnersBooks;
 
-    private ArrayList<Student> previousOwnersJournals;
+    //private ArrayList<Student> previousOwnersJournals;
     private ArrayList<String> books;
     private ArrayList<String> genres;
     private ArrayList<String> matchedGenres;
@@ -32,6 +32,7 @@ public class Library {
         bannedUsers = new ArrayList<>();
         shelves = new ArrayList<>();
         Journals = new ArrayList<>();
+        journalSubscriptions = new ArrayList<>();
     }
 
     public boolean checkBook(String book, Library library) {
@@ -50,13 +51,13 @@ public class Library {
 
 
 
-    public void journalReturn(Student student){
+    /*public void journalReturn(Student student){
         if (Borrowing.contains(student)){
             previousOwnersJournals.add(student);
             Borrowing.remove(student);
             System.out.println("Journal has been returned");
         }
-    }
+    }*/
 
     public void bookReturn(Student student) {
         if (Borrowing.contains(student)) {
@@ -105,6 +106,10 @@ public class Library {
 
     public ArrayList<String> getBooks() {
         return books;
+    }
+
+    public ArrayList<Student> getJournalSubscriptions() {
+        return journalSubscriptions;
     }
 
     public void getNewBook(String book) {
