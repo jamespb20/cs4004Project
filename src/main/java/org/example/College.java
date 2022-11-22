@@ -13,7 +13,7 @@ public class College {
         libraries.add(library);
     }
 
-    public boolean checkBook(String book, ArrayList<Library> library) {
+    public boolean checkBook(Book book, ArrayList<Library> library) {
         for (Library lib: libraries) {
             if (!library.isEmpty() && lib.getBooks().contains(book)){
                 return true;
@@ -30,7 +30,7 @@ public class College {
         college.getLibraries().addAll(libraries);
     }
 
-    public boolean getBookCollege(Library library, String book) {
+    public boolean getBookCollege(Library library, Book book) {
         boolean bool = true;
         for (Library i : libraries) {
             if (library.checkBook(book, i)) {

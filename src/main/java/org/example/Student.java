@@ -3,11 +3,11 @@ package org.example;
 
 public class Student {//Student has name and can borrow books
     private String name;
-    private String book;
+    private Book book;
 
     private Journal journal;
 
-    public Student(String name, String book) {
+    public Student(String name, Book book) {
         this.name = name;
         this.book = book;
 
@@ -22,7 +22,7 @@ public class Student {//Student has name and can borrow books
         this.name = name;
     }
 
-    public String getBook() {
+    public Book getBook() {
         return book;
     }
 
@@ -30,7 +30,7 @@ public class Student {//Student has name and can borrow books
         return name;
     }
 
-    public void setBook(String book) {
+    public void setBook(Book book) {
         this.book = book;
     }
 

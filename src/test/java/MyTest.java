@@ -1,8 +1,6 @@
 import org.example.*;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MyTest {
@@ -12,10 +10,11 @@ public class MyTest {
         Library library = new Library();
         ul.addLibrary(library);
         Student student1 = new Student("Craig");
-        library.getNewBook("The Communists Manifesto");
-        library.bookBorrowing(student1, "The Communists Manifesto");
+        Book book1 = new Book("The Communists Manifesto","Karl Marx");
+        library.getNewBook(book1);
+        library.bookBorrowing(student1, book1);
         Student student2 = new Student("Kevin");
-        assertTrue(library.bookBorrowing(student2, "The Communists Manifesto"));
+        assertTrue(library.bookBorrowing(student2, book1));
 
         /*Library library2 = new Library();
         ul.addLibrary(library2);
@@ -29,9 +28,10 @@ public class MyTest {
         Library library = new Library();
         ul.addLibrary(library);
         Student student1 = new Student("Craig");
-        library.getNewBook("The Communists Manifesto");
-        library.bookBorrowing(student1, "The Communists Manifesto");
-        assertTrue(library.bookBorrowing(student1, "The Communists Manifesto"));
+        Book book1 = new Book("The Communists Manifesto","Karl Marx");
+        library.getNewBook(book1);
+        library.bookBorrowing(student1, book1);
+        assertTrue(library.bookBorrowing(student1, book1));
     }
 
     @Test
@@ -43,10 +43,11 @@ public class MyTest {
         ul.addLibrary(library1);
         lit.addLibrary(library2);
         ul.addColleges(lit);
-        library1.getNewBook("Introduction to Java programming");
-        assertAll(() -> assertTrue(lit.getBookCollege(library2, "Introduction to Java programming")),
-                () -> assertTrue(ul.checkBook("Introduction to Java programming", lit.getLibraries())),
-                () -> assertFalse(ul.checkBook("Agile manifesto", lit.getLibraries())));
+        Book book1 = new Book("Introduction to Java programming","Dermot Shiners Kennedy");
+        library1.getNewBook(book1);
+        assertAll(() -> assertTrue(lit.getBookCollege(library2, book1)),
+                () -> assertTrue(ul.checkBook(book1, lit.getLibraries())),
+                () -> assertFalse(ul.checkBook(book1, lit.getLibraries())));
     }
 
     @Test
@@ -56,39 +57,64 @@ public class MyTest {
         Library library = new Library();
         ul.addLibrary(library);
         Student student1 = new Student("Craig");
-        library.getNewBook("book1");
-        library.bookBorrowing(student1, "book1");
+        Book book1 = new Book("The Communists Manifesto","Karl Marx");
+        library.getNewBook(book1);
+        library.bookBorrowing(student1, book1);
         library.bookReturn(student1);
-        library.setBookDamaged("book1");//Book came back damaged
+        library.setBookDamaged(book1);//Book came back damaged
         Student student2 = new Student("James");
-        assertTrue(library.bookBorrowing(student2, "book1"));
+        assertTrue(library.bookBorrowing(student2, book1));
     }
 
     @Test
     public void testSearch() {  // users should be able to search books by genre
         Library library = new Library();
-        library.getNewBook("The Shining");
-        library.getNewBook("Diary of a Wimpy Kid");
-        library.getNewBook("It");
-        library.getNewBook("1984");
-        library.getNewBook("Fahrenheit 451");
-        library.genreAdder("Horror");
-        library.genreAdder("Kids");
-        library.genreAdder("Horror");
-        library.genreAdder("Sci-Fi");
-        library.genreAdder("Dystopian");
-        assertTrue(library.genreSearch("Horror"));
+
+        Genre horror = new Genre(library.getBooks(),"Horror");
+        Genre kids  = new Genre(library.getBooks(),"Kids");
+        Genre Scifi = new Genre(library.getBooks(),"Sci-fi");
+        Genre Dystopian = new Genre(library.getBooks(),"Dystopian");
+        Genre Adventure = new Genre(library.getBooks(),"Adventure");
+
+        Book The_Shining = new Book("The Shining",horror);
+        Book Diary_of_a_wimpy_kid = new Book("Diary of a Wimpy Kid",kids);
+        Book It = new Book("It",horror);
+        Book Nineteen_eighty_four = new Book("1984",Scifi);
+        Book Fahrenheit = new Book("Fahrenheit 451",Dystopian);
+
+        library.genreAdder(horror);
+        library.genreAdder(kids);
+        library.genreAdder(Scifi);
+        library.genreAdder(Dystopian);
+        library.genreAdder(Adventure);
+
+
+
+        library.getNewBook(The_Shining);
+        library.getNewBook(Diary_of_a_wimpy_kid);
+        library.getNewBook(It);
+        library.getNewBook(Nineteen_eighty_four);
+        library.getNewBook(Fahrenheit);
+
+        assertEquals(library.getBooksOfGenre(horror),The_Shining);
+        assertTrue(library.genreSearch(horror));
+
+        assertAll(() -> assertTrue(library.genreSearch(horror)),
+                () -> assertTrue(library.genreSearch(horror)),
+                () -> assertNull(library.getBooksOfGenre(Adventure)));
     }
 
     @Test
     public void testMissing() {
         Library library = new Library();
         Student james = new Student("James");
-        library.getNewBook("Ninja: Get Good: My Ultimate Guide to Gaming");
-        library.getNewBook("Official Fortnite Battle Royale Survival Guide");
-        library.bookBorrowing(james, "Ninja: Get Good: My Ultimate Guide to Gaming");
-        library.bookMissing(james, "Ninja: Get Good: My Ultimate Guide to Gaming");
-        assertTrue(library.bookBorrowing(james, "Official Fortnite Battle Royale Survival Guide"));
+        Book book1 = new Book("Ninja: Get Good: My Ultimate Guide to Gaming");
+        Book book2 = new Book("Official Fortnite Battle Royale Survival Guide");
+        library.getNewBook(book1);
+        library.getNewBook(book2);
+        library.bookBorrowing(james, book1);
+        library.bookMissing(james, book1);
+        assertTrue(library.bookBorrowing(james, book2));
     }
 
 
@@ -137,6 +163,6 @@ public class MyTest {
         College ul = new College();
         Library library = new Library();
         Shelves cool = new Shelves("cool");
-        library.addShelftoLibrary(cool);
+        //library.addShelftoLibrary(cool);
     }
 }
