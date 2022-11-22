@@ -16,6 +16,10 @@ public class MyTest {
         Student student2 = new Student("Kevin");
         assertTrue(library.bookBorrowing(student2, book1));
 
+        Student student = new Student("James");
+        Book book = new Book("Java 2");
+        assertFalse(library.bookBorrowing(student,book));
+
         /*Library library2 = new Library();
         ul.addLibrary(library2);
         ul.checkBook("The Communists Manifesto",library2);
@@ -99,7 +103,7 @@ public class MyTest {
         assertTrue(library.genreSearch(horror));
 
         assertAll(() -> assertTrue(library.genreSearch(horror)),
-                () -> assertTrue(library.genreSearch(horror)),
+                () -> assertTrue(library.checkGenre(The_Shining, horror)),
                 () -> assertNull(library.getBooksOfGenre(Adventure)));
     }
 
@@ -129,14 +133,20 @@ public class MyTest {
     public void testJournalSubscription(){
         Library library = new Library();
         Student student = new Student("Kevin");
+        Student student1 = new Student("Craig");
         Journal journal1 = new Journal("Journal1",2021);
         Journal journal2 = new Journal("Journal2",2022);
+        Journal journal3 = new Journal("Journal3",2023);
 
         library.addJournal(journal1);
         library.addJournal(journal2);
 
         assertAll(() -> assertTrue(library.journalSubscription(student,journal2)),
-                () -> assertEquals(library.getJournalSubscriptions() != null,library.getJournalSubscriptions() != null));
+                () -> assertEquals(library.getJournalSubscriptions() != null,library.getJournalSubscriptions() != null),
+                () -> assertTrue(library.cancelJournalSubscription(student)),
+                () -> assertFalse(library.cancelJournalSubscription(student1)),
+                () -> assertFalse(library.journalSubscription(student1,journal3)));
+
 
     }
 

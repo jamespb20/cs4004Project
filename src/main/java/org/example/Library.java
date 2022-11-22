@@ -85,20 +85,8 @@ public class Library {
         return "book has no previous owners";
     }
 
-    public ArrayList<Student> getBanned() {
-        return bannedUsers;
-    }
-
     public void setBookDamaged(Book book) {
         damagedBooks.add(book);
-    }
-
-    public ArrayList<Book> getDamagedBooks() {
-        return damagedBooks;
-    }
-
-    public ArrayList<Student> getBorrowing() {
-        return Borrowing;
     }
 
     public ArrayList<Book> getBooks() {
@@ -142,18 +130,18 @@ public class Library {
         }return null;
     }
 
-    public ArrayList<Genre> getMatchedGenres() {
-        return matchedGenres;
-    }
-
-    public ArrayList<Shelves> getShelves() {
-        return shelves;
-    }
-
-    public void addShelfToLibrary(Shelves shelf) {
-
-        shelves.add(shelf);
-    }
+//    public ArrayList<Genre> getMatchedGenres() {
+//        return matchedGenres;
+//    }
+//
+//    public ArrayList<Shelves> getShelves() {
+//        return shelves;
+//    }
+//
+//    public void addShelfToLibrary(Shelves shelf) {
+//
+//        shelves.add(shelf);
+//    }
 
     public boolean journalSubscription(Student student, Journal journal) {
         if (Journals.contains(journal)) {
@@ -175,46 +163,32 @@ public class Library {
         }
     }
 
-    /*public boolean journalBorrowing(Student student, Journal journal){DON'T THINK THIS IS NEEDED
-        int i = 0;
-        do {
-            if (!Borrowing.isEmpty() && Borrowing.get(i).equals(student)){
-                System.out.println("This book is either already in use or not in this library");
-                return true;
-            } else if (student.getJournal() == null || student.getJournal() != journal){
-                student.setJournal(journal);
-                Borrowing.add(student);
-                return true;
-            }
-            i++;
-        } while (i<Borrowing.size());
-        return false;
-    }*/
     public boolean bookBorrowing(Student student, Book book) {
         int i = 0;
         do {
-            if (bannedUsers.contains(student)) {
-                System.out.println("You have been banned from using the library for not returning books");
-                return true;
-            }
-            if (damagedBooks.contains(book)) {
-                System.out.printf("The book %s was found to be damaged by previous owner: %s", book, getPreviousOwner(book));
-                return true;
-            }
-            if (!Borrowing.isEmpty() && Borrowing.get(i).equals(student)) {
-                System.out.println("This book is either already in use or not in this library");
-                return true;
-            } else {
-                if (student.getBook() == null || student.getBook() != book) {
-                    student.setBook(book);
-                    Borrowing.add(student);
-                    System.out.println("Book has been borrowed");
+            if (books.contains(book)) {
+                if (bannedUsers.contains(student)) {
+                    System.out.println("You have been banned from using the library for not returning books");
                     return true;
+                }
+                if (damagedBooks.contains(book)) {
+                    System.out.printf("The book %s was found to be damaged by previous owner: %s", book, getPreviousOwner(book));
+                    return true;
+                }
+                if (!Borrowing.isEmpty() && Borrowing.get(i).equals(student)) {
+                    System.out.println("This book is either already in use or not in this library");
+                    return true;
+                } else {
+                    if (student.getBook() == null || student.getBook() != book) {
+                        student.setBook(book);
+                        Borrowing.add(student);
+                        System.out.println("Book has been borrowed");
+                        return true;
+                    }
                 }
             }
             i++;
         } while (i < Borrowing.size());
         return false;
     }
-
 }
