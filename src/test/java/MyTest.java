@@ -46,8 +46,7 @@ public class MyTest {
         Book book1 = new Book("Introduction to Java programming","Dermot Shiners Kennedy");
         library1.getNewBook(book1);
         assertAll(() -> assertTrue(lit.getBookCollege(library2, book1)),
-                () -> assertTrue(ul.checkBook(book1, lit.getLibraries())),
-                () -> assertFalse(ul.checkBook(book1, lit.getLibraries())));
+                () -> assertTrue(ul.checkBook(book1, lit.getLibraries())));
     }
 
     @Test
