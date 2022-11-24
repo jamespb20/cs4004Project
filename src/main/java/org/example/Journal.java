@@ -26,19 +26,6 @@ public class Journal implements Comparable<Journal>{
         this.topic = topic;
     }
 
-    public void setVolumes(ArrayList<String> volumes) {
-        this.volumes = volumes;
-    }
-
-    public ArrayList<String> getVolumes() {
-        return volumes;
-    }
-
-    public void setSubscription(boolean subscription){
-        this.subscription = subscription;
-    }
-
-
     private String getName(){
         return name;
     }
@@ -48,24 +35,6 @@ public class Journal implements Comparable<Journal>{
         otherUniAccess = pep;
 
     }
-
-    public boolean isOtherUniAccess() {
-        return otherUniAccess;
-    }
-
-    /*public boolean cancelSubscription(String topic){
-
-        if(topics.contains(topic) || isOtherUniAccess()){
-            setSubscription(true);
-            return true;
-        }
-        else
-        {
-            setSubscription(false);
-            return false;
-        }
-    }*/
-
     @Override
     public int compareTo(Journal o) {
         int compareYear = o.getYear();
