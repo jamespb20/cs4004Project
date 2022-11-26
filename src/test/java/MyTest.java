@@ -174,4 +174,16 @@ public class MyTest {
         Shelves cool = new Shelves("cool");
         //library.addShelftoLibrary(cool);
     }
+
+    @Test
+    public void testCollegeChecker(){
+        College ul = new College();
+        Library l = new Library();
+        Book book1 = new Book("Self help book 73");
+        Book book2 = new Book("Green eggs and ham");
+        l.getNewBook(book1);
+        l.getNewBook(book2);
+        ul.addLibrary(l);
+        assertTrue(ul.checkWhichCollege(l, book2));
+    }
 }

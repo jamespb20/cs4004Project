@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class College {
     private ArrayList<Library> libraries;
+    private String name;
 
     public College() {
         libraries = new ArrayList<>();
@@ -20,6 +21,9 @@ public class College {
             }
         }return false;
 
+    }
+    public void setName(String collegeName){
+        name = collegeName;
     }
 
     public void addColleges(College college) {
@@ -47,5 +51,14 @@ public class College {
 
     public ArrayList<Library> getLibraries() {
         return libraries;
+    }
+    public boolean checkWhichCollege(Library library, Book book){
+        if (checkBook(book, libraries) == true){
+            System.out.println(name);
+            return true;
+        } else {
+            System.out.println("College does not have this book");
+            return false;
+        }
     }
 }
